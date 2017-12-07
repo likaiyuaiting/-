@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+	int i =54;//43
+	printf("%d\n", printf("%d", printf("%d", i)));
+	system("pause");
+	return 0;
+}
