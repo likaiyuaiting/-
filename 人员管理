@@ -1,0 +1,158 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+//#define _CRT_SECURE_NO_WARNINGS 
+typedef struct proper
+{
+	char name[10];
+	char sex[5];
+	int age;
+	int tell;
+	char addr[20];
+}porper;
+typedef struct Con
+{
+	porper con[1000];
+	int count;
+}Con;
+
+void init()
+{
+	printf("\n******************\n");
+	printf("*****1、增加******\n");
+	printf("*****2、删除******\n");
+	printf("*****3、查看******\n");
+	printf("*****4、修改******\n");
+	printf("*****0、退出******\n");
+	printf("******************\n");
+}
+  
+void add(Con *aa)
+{
+	char ch;
+	int cut = 1,num;
+
+	while (cut){ 
+
+	printf("请录入姓名：");
+	scanf("%s",aa->con[aa->count].name);
+
+	printf("请录入性别：");
+	scanf("%s",aa->con[aa->count].sex);
+
+	printf("请录入年龄：");
+	scanf("%d",&aa->con[aa->count].age);
+
+	printf("请录入电话：");
+	scanf("%d",&aa->con[aa->count].tell);
+
+	printf("请录入住址：");
+	scanf("%s",aa->con[aa->count].addr);
+	printf("录入成功!!!!!\n");
+	aa->count++;
+	getchar();
+	//scanf("%d",&num);
+	//scanf("%d", &cut);
+	 
+	printf("继续录入请输入（y/Y）:");
+
+	scanf("%c", &ch);
+	if (ch == 'n' || ch == 'n')
+		break;
+	}
+}
+void del(Con* aa)
+{
+	char nm[10];
+	int i = 0,j=0;
+	printf("请输入要删除的同事姓名：");
+	scanf("%s",nm);
+	for (i = 0; i < aa->count; i++)
+	   if (strcmp(nm, aa->con[i].name) == 0) break;
+	   if (i == aa->count) printf("你要删除的人不存在！！");
+	   else
+	   {
+		   for (j = i; j < aa->count; j++)
+		   {
+			   
+			 strcpy(aa->con[j].name, aa->con[j + 1].name);
+			strcpy(aa->con[j].sex, aa->con[j + 1].sex);
+			 aa->con[j].tell = aa->con[j + 1].tell;
+			aa->con[j].age = aa->con[j].age;
+			strcpy(aa->con[j].addr, aa->con[j + 1].addr);
+		   }
+		  aa->count--;
+	   }
+}
+void fid(Con* aa)
+{
+	int i=0;
+	printf("           姓名        性别  年龄  电话      住址\n");
+	for (i = 0; i < aa->count;i++)
+	printf("第%d个同事:%-10s  %-4s  %-4d  %-10d  %-s\n",i+1,aa->con[i].name,aa->con[i].sex,aa->con[i].age,aa->con[i].tell,aa->con[i].addr);
+}
+void chg(Con* aa)
+{
+	char nm[10];
+	int i = 0;
+	printf("请输入要修改的同事姓名：");
+	scanf("%s", nm);
+	for (i = 0; i < aa->count; i++)
+	{ 
+		if (strcmp(nm, aa->con[i].name) == 0) 
+			break;
+	}
+	if (i == aa->count) printf("你要修改的人不存在！！");
+	else
+	{
+		printf("请录入性别：");
+		scanf("%s", aa->con[i].sex);
+
+		printf("请录入年龄：");
+		scanf("%d", &aa->con[i].age);
+
+		printf("请录入电话：");
+		scanf("%d", &aa->con[i].tell);
+
+		printf("请录入住址：");
+		scanf("%s", aa->con[i].addr);
+
+		printf("修改成功!!!!!\n");
+	}
+}
+void test()
+{
+	Con aa;
+	int key;
+	char ch,ch1;
+	aa.count = 0;
+	do
+	{
+		init();
+		printf("请输入你要操作的序号：");
+		scanf("%d", &key);
+		switch (key)
+		{
+		case 1: 
+			add(&aa);
+			
+			break;
+		case 2:del(&aa);
+			break;
+		case 3:fid(&aa);
+			break;
+		case 4:chg(&aa);
+			break;
+		case 0:
+			break;
+		default:printf("你输入序列错误，请检查后输入。\n");
+			break;
+		}
+	} while (key);
+}
+int main(void)
+{
+	test();
+	system("pause");
+	return 0;
+}
