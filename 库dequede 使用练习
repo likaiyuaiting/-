@@ -1,0 +1,118 @@
+#if 0
+// deque::begin
+#include <iostream>
+#include <deque>
+using namespace std;
+
+int main()
+{
+	deque<int> mydeque;
+	deque<int>::iterator it;
+
+	for (int i = 1; i <= 5; i++) mydeque.push_back(i);
+
+	cout << "mydeque contains:";
+
+	it = mydeque.begin();
+
+	while (it != mydeque.end())
+		cout << " " << *it++;
+
+	cout << endl;
+
+	return 0;
+}	
+/*
+输出：
+mydeque contains: 1 2 3 4 5
+*/
+
+#endif
+
+
+
+#if 0
+// deque::front
+#include <iostream>
+#include <deque>
+using namespace std;
+
+int main()
+{
+	deque<int> mydeque;
+
+	mydeque.push_front(77);
+	mydeque.push_back(16);
+
+	mydeque.front() -= mydeque.back();
+
+	cout << "mydeque.front() is now " << mydeque.front() << endl;
+
+	return 0;
+}
+/*
+输出：
+mydeque.front() is now 61
+*/
+#endif
+
+#if 0
+// deque::back
+#include <iostream>
+#include <deque>
+using namespace std;
+
+int main()
+{
+	deque<int> mydeque;
+
+	mydeque.push_back(10);
+
+	while (mydeque.back() != 0)
+	{
+		mydeque.push_back(mydeque.back() - 1);
+	}
+
+	cout << "mydeque contains:";
+	for (unsigned i = 0; i<mydeque.size(); i++)
+		cout << " " << mydeque[i];
+
+	cout << endl;
+
+	return 0;
+}
+/*
+输出：
+mydeque contains: 10 9 8 7 6 5 4 3 2 1 0
+*/
+#endif
+#if 1
+// deque::end
+#include <iostream>
+#include <deque>
+using namespace std;
+
+int main()
+{
+	deque<int> mydeque;
+	deque<int>::iterator it;
+
+	for (int i = 1; i <= 5; i++) mydeque.insert(mydeque.end(), i);
+
+	cout << "mydeque contains:";
+
+	it = mydeque.begin();
+
+	while (it != mydeque.end())
+		cout << " " << *it++;
+
+	cout << endl;
+
+	return 0;
+}
+/*
+输出：
+mydeque contains: 1 2 3 4 5
+*/
+#endif
+
