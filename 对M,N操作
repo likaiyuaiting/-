@@ -1,0 +1,26 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	int m=0, k, i,j, s, l;
+	int a[7] = { 3, -6, 2, 4, -2, 3, -1 };
+	for (i =0 ; i <7; i++)
+	{
+		s = 0;
+		for (j = i ; j <7; j++)
+		{
+			s +=  a[j];
+			if (s > m)
+			{
+				k =i+1;
+				l = j+1+1;
+				m = s;
+			}
+		}
+	}
+	printf("%5d%5d%5d\n",k,l,m);
+	system("pause");
+	return 0;
+}
